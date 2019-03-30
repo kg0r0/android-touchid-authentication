@@ -18,6 +18,7 @@
         android:layout_height="wrap_content"
         android:text="successful"
         android:id="@+id/confirmation_message"
+        android:visibility="gone"
         />
 
 </LinearLayout>
