@@ -18,15 +18,18 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.KeyPairGenerator;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.SecureRandom;
 import java.security.Signature;
+import java.security.SignatureException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
 import java.security.spec.ECGenParameterSpec;
@@ -53,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             mKeyStore = KeyStore.getInstance("AndroidKeyStore");
             mSignature = Signature.getInstance("SHA256withECDSA");
 
-        } catch (Exception e) {
+        } catch (NoSuchAlgorithmException | NoSuchProviderException | KeyStoreException e) {
             throw new RuntimeException(e);
         }
     }
@@ -130,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                             confirmationMessage.setVisibility(View.VISIBLE);
                             dialog.dismiss();
-                        } catch (Exception e) {
+                        } catch (NoSuchAlgorithmException | InvalidKeyException | KeyStoreException| SignatureException e) {
                             throw new RuntimeException(e);
                         }
 
@@ -179,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
                             .setUserAuthenticationRequired(true)
                             .build());
             mKeyPairGenerator.generateKeyPair();
-        } catch (Exception e) {
+        } catch (InvalidAlgorithmParameterException e) {
             throw new RuntimeException(e);
         }
     }
