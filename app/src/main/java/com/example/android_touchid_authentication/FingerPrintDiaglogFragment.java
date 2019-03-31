@@ -12,7 +12,7 @@ public class FingerPrintDiaglogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage("Please Authenticate.")
+        builder.setMessage("Please touch the sensor.")
             .setNegativeButton("Cancel", (dialog, id) -> {
             dismiss();
         });
