@@ -11,7 +11,6 @@ import android.security.keystore.KeyProperties;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,7 +18,6 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.KeyPairGenerator;
 import java.security.KeyStore;
@@ -29,7 +27,6 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.SecureRandom;
 import java.security.Signature;
-import java.security.SignatureException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
 import java.security.spec.ECGenParameterSpec;
@@ -125,8 +122,7 @@ public class MainActivity extends AppCompatActivity {
                             verificationFunction.initVerify(publicKey);
                             verificationFunction.update(secureRandomBytes);
 
-
-                            // TODO 署名検証（通信）
+                            // TODO: Send signature and publicKey to backend server.
                             if (verificationFunction.verify(sigBytes)) {
                                 confirmationMessage.setText("Success");
                             } else {
