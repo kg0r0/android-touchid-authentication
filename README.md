@@ -10,7 +10,7 @@ $ ./gradlew assemble
 ## Usage
 * clone this repository
 ```
-$ https://github.com/kg0r0/android-touchid-authentication.git
+$ git clone https://github.com/kg0r0/android-touchid-authentication.git
 ```
 * import this project and run
 
